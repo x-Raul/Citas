@@ -124,10 +124,10 @@ JOIN Citas c ON v.id = c.vehiculo_id", OConnection);
 
                     SqlCommand cmd = new SqlCommand("sp_EditCitaAdmin", OConnection);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("id", OCita.Id);
-                    cmd.Parameters.AddWithValue("estado", OCita.Estado);
-                    cmd.Parameters.AddWithValue("comentario", OCita.Comentario ?? "");
-                    cmd.Parameters.AddWithValue("enddate", OCita.EndDate);
+                    cmd.Parameters.AddWithValue("@id", OCita.Id);
+                    cmd.Parameters.AddWithValue("@estado", OCita.Estado);
+                    cmd.Parameters.AddWithValue("@comentario", OCita.Comentario ?? "");
+                    cmd.Parameters.AddWithValue("@enddate", OCita.EndDate);
 
                     cmd.ExecuteNonQuery();
                     OConnection.Close();
@@ -157,7 +157,7 @@ JOIN Citas c ON v.id = c.vehiculo_id", OConnection);
 
                     SqlCommand cmd = new SqlCommand("SELECT id, vehiculo_id, initdate, estado, comentario, enddate FROM Citas WHERE id = @id", OConnection);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("id", id);
+                    cmd.Parameters.AddWithValue("@id", id);
 
                     SqlDataReader reader = cmd.ExecuteReader();
 

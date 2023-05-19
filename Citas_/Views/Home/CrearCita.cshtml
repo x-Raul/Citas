@@ -74,14 +74,19 @@
             });
         });
 
-
+        const vehiculoSelect = document.getElementById('vehiculo-select');
+        if (!vehiculoSelect.value) {
+            alert('Agregar vehiculo')
+        } else {
+            // El select tiene un valor seleccionado
+        }
 
         $(document).ready(function () {
         $("#btnEnviar").click(function () {
-        var email = $("#vehi").val();
-        var pass = $("#init").val();
+        var modelo = $("#vehi").val();
+        var init = $("#init").val();
 
-        if (email == "" || pass == "" ) {
+            if (modelo == "" || modelo == "Modelo" || init == "" ) {
         alert("Todos los campos son obligatorios.");
         return false;
         }
